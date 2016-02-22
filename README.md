@@ -24,7 +24,15 @@ Get the top k elements
 ```elixir
 top(state, 2) # This will be [foo: 4, bar: 3]
 top(state, 3) # This will be [foo: 4, bar: 3, buzz: 3], so the inaccuracy starts to come into play when an element is kicked out, and the estimate is the upper bound
+```
 
+Merge two states
+```elixir
+left  = init(4) |> push(:foo) |> push(:bar)
+right = init(4) |> push(:foo) |> push(:baz)
+
+merge(left, right)
+|> top(3) # Would be [foo: 2, bar: 1, baz: 1]
 ```
 
 ## References
