@@ -47,11 +47,37 @@ defmodule Spacesaving do
       iex> {%{foo: 3, baz: 2}, 2} |> Spacesaving.top(1)
       [foo: 3]
   """
-  def top({counts, _}, k) do
+  def top({counts, _}, k), do: top_counts(counts, k)
+
+  defp top_counts(counts, k) do
     counts
     |> Enum.into([])
     |> Enum.sort_by(fn {_, c} -> -c end)
     |> Enum.take(k)
+  end
+
+
+  @doc """
+  Merge two states together, adding the counts for keys in both
+  counters. The new state will be the minimum of
+  the two states' sizes.
+
+  ## Examples
+
+      iex> Spacesaving.merge({%{foo: 3, baz: 2}, 2}, {%{foo: 3, baz: 2}, 2})
+      {%{foo: 6, baz: 4}, 2}
+
+      iex> Spacesaving.merge({%{foo: 3, bar: 1}, 2}, {%{foo: 3, baz: 2}, 2})
+      {%{foo: 6, baz: 2}, 2}
+  """
+  def merge({left, left_max}, {right, right_max}) do
+    new_max = min(left_max, right_max)
+
+    merged = Map.merge(left, right, fn _k, v0, v1 -> v0 + v1 end)
+    |> top_counts(new_max)
+    |> Enum.into(%{})
+
+    {merged, new_max}
   end
 
 end

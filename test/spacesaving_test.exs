@@ -53,4 +53,35 @@ defmodule SpacesavingTest do
 
   end
 
+  test "can merge two counters" do
+    left  = Spacesaving.init(3)
+    right = Spacesaving.init(3)
+
+    left = Enum.reduce(1..16, left, fn _, acc ->
+      acc
+      |> Spacesaving.push(:foo)
+      |> Spacesaving.push(:foo)
+      |> Spacesaving.push(:foo)
+      |> Spacesaving.push(:bar)
+      |> Spacesaving.push(:bar)
+      |> Spacesaving.push(:bar)
+      |> Spacesaving.push(:baz)
+      |> Spacesaving.push(:buzz)
+      |> Spacesaving.push(:buzz)
+    end)
+
+    right = Enum.reduce(1..16, right, fn _, acc ->
+      acc
+      |> Spacesaving.push(:foo)
+      |> Spacesaving.push(:foo)
+      |> Spacesaving.push(:foo)
+      |> Spacesaving.push(:bar)
+      |> Spacesaving.push(:biz)
+    end)
+
+    merged = Spacesaving.merge(left, right)
+    assert merged == {%{foo: 96, bar: 64, buzz: 48}, 3}
+  end
+
+
 end
