@@ -6,6 +6,11 @@ Simple algorithm to estimate distinct elements in a stream using bounded space. 
 
 ## Usage
 
+Add it to you `mix.exs` deps
+```elixir
+{:spacesaving, "~> 0.0.2"}
+```
+
 ```elixir
 import Spacesaving
 
