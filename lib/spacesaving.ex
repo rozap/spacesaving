@@ -1,5 +1,8 @@
 defmodule Spacesaving do
 
+  @type counter :: {%{}, integer}
+  @type countable :: atom
+                  | String.t
   @doc """
   Initialize the state
 
@@ -8,6 +11,7 @@ defmodule Spacesaving do
       iex> Spacesaving.init(2)
       {%{}, 2}
   """
+  @spec init(integer) :: counter
   def init(n) do
     {%{}, n}
   end
@@ -22,6 +26,7 @@ defmodule Spacesaving do
       iex> Spacesaving.init(2) |> Spacesaving.push(:foo) |> Spacesaving.push(:foo) |> Spacesaving.push(:bar) |> Spacesaving.push(:baz)
       {%{foo: 2, baz: 2}, 2}
   """
+  @spec push(counter, countable) :: counter
   def push({counts, max}, item) do
     counts = if Map.has_key?(counts, item) or Enum.count(counts) < max do
       Map.update(counts, item, 1, fn c -> c + 1 end)
@@ -47,8 +52,10 @@ defmodule Spacesaving do
       iex> {%{foo: 3, baz: 2}, 2} |> Spacesaving.top(1)
       [foo: 3]
   """
+  @spec top(counter, integer) :: [{countable, integer}]
   def top({counts, _}, k), do: top_counts(counts, k)
 
+  @spec top_counts(%{}, integer) :: [{countable, integer}]
   defp top_counts(counts, k) do
     counts
     |> Enum.into([])
@@ -70,6 +77,7 @@ defmodule Spacesaving do
       iex> Spacesaving.merge({%{foo: 3, bar: 1}, 2}, {%{foo: 3, baz: 2}, 2})
       {%{foo: 6, baz: 2}, 2}
   """
+  @spec merge(counter, counter) :: counter
   def merge({left, left_max}, {right, right_max}) do
     new_max = min(left_max, right_max)
 

@@ -3,7 +3,7 @@ defmodule Spacesaving.Mixfile do
 
   def project do
     [app: :spacesaving,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.2",
      description: description,
      package: package,
@@ -26,7 +26,8 @@ defmodule Spacesaving.Mixfile do
   defp deps do
     [
       {:ex_doc, github: "elixir-lang/ex_doc"},
-      {:earmark, ">= 0.0.0"}
+      {:earmark, ">= 0.0.0"},
+      {:dialyze, "~> 0.2.0"}
     ]
   end
 

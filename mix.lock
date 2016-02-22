@@ -1,2 +1,4 @@
-%{"earmark": {:hex, :earmark, "0.2.1"},
+%{"dialyxir": {:hex, :dialyxir, "0.3.3"},
+  "dialyze": {:hex, :dialyze, "0.2.0"},
+  "earmark": {:hex, :earmark, "0.2.1"},
   "ex_doc": {:git, "https://github.com/elixir-lang/ex_doc.git", "95eebc0872ac322f09e302d3861ff29e49fdcb20", []}}

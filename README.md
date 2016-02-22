@@ -11,10 +11,10 @@ Add it to you `mix.exs` deps
 {:spacesaving, "~> 0.0.2"}
 ```
 
+Init with 3 spaces, so we track 3 elements
 ```elixir
 import Spacesaving
 
-# Init with 3 spaces, so we track 3 elements
 state = init(3)
 ```
 
@@ -41,6 +41,7 @@ right = init(4) |> push(:foo) |> push(:baz)
 merge(left, right)
 |> top(3) # Would be [foo: 2, bar: 1, baz: 1]
 ```
+
 
 ## References
 [Original Paper](https://icmi.cs.ucsb.edu/research/tech_reports/reports/2005-23.pdf)
