@@ -2,6 +2,8 @@
 
 Simple algorithm to estimate count distinct elements in a stream using bounded space. The estimate is the upper bound on the element.
 
+[Docs on hex](http://hexdocs.pm/spacesaving/Spacesaving.html)
+
 ## Usage
 
 ```elixir
