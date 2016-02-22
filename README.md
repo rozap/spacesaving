@@ -1,6 +1,8 @@
 # Spacesaving
 
-Simple algorithm to estimate count distinct elements in a stream using bounded space. The estimate is the upper bound on the element.
+Simple algorithm to estimate distinct elements in a stream using bounded space. The estimate is the upper bound on the element's actual count.
+
+[Docs on hex](http://hexdocs.pm/spacesaving/Spacesaving.html)
 
 ## Usage
 
