@@ -44,4 +44,4 @@ merge(left, right)
 
 
 ## References
-[Original Paper](https://pdfs.semanticscholar.org/3334/63a8241e809a8cb6092b0b3b82c3d323bb41.pdf)
+[Original Paper](http://www.cse.ust.hk/~raywong/comp5331/References/EfficientComputationOfFrequentAndTop-kElementsInDataStreams.pdf)
