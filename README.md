@@ -44,4 +44,4 @@ merge(left, right)
 
 
 ## References
-[Original Paper](https://icmi.cs.ucsb.edu/research/tech_reports/reports/2005-23.pdf)
+[Original Paper](https://pdfs.semanticscholar.org/3334/63a8241e809a8cb6092b0b3b82c3d323bb41.pdf)
